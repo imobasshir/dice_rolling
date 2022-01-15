@@ -13,11 +13,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          centerTitle: true,
-          title: Text('Dicee'),
-          backgroundColor: Colors.red,
+          title: Text('Dicee',
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 22.0,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+          backgroundColor: Colors.pinkAccent,
         ),
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.pinkAccent,
         body: DiceRoll(),
       ),
     );
@@ -34,6 +39,11 @@ class DiceRoll extends StatefulWidget {
 class _DiceRollState extends State<DiceRoll> {
   var leftDiceNumber = 1;
   var rightDiceNumber = 1;
+  dicePressed() {
+    leftDiceNumber = Random().nextInt(6) + 1;
+    rightDiceNumber = Random().nextInt(6) + 1;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -43,8 +53,7 @@ class _DiceRollState extends State<DiceRoll> {
             child: TextButton(
               onPressed: () {
                 setState(() {
-                  leftDiceNumber = Random().nextInt(6) + 1;
-                  rightDiceNumber = Random().nextInt(6) + 1;
+                  dicePressed();
                 });
               },
               child: Image.asset('images/dice$leftDiceNumber.png'),
@@ -54,8 +63,7 @@ class _DiceRollState extends State<DiceRoll> {
             child: TextButton(
               onPressed: () {
                 setState(() {
-                  leftDiceNumber = Random().nextInt(6) + 1;
-                  rightDiceNumber = Random().nextInt(6) + 1;
+                  dicePressed();
                 });
               },
               child: Image.asset('images/dice$rightDiceNumber.png'),
