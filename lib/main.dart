@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.pinkAccent,
         body: DiceRoll(),
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
